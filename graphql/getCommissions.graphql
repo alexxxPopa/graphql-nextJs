@@ -1,0 +1,9 @@
+
+ query($bucketSlug: String!, $readKey: String!) { 
+  object(bucket_slug: $bucketSlug, slug:"commissions", read_key: $readKey, locale: "en") {
+    metadata
+  }
+}
+  
+
+  
