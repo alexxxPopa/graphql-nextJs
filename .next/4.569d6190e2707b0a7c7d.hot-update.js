@@ -1,11 +1,11 @@
 webpackHotUpdate(4,{
 
-/***/ "./graphql/getCommissions.graphql":
+/***/ "./graphql/getTranslations.graphql":
 /***/ (function(module, exports) {
 
 
-    var doc = {"kind":"Document","definitions":[{"kind":"OperationDefinition","operation":"query","variableDefinitions":[{"kind":"VariableDefinition","variable":{"kind":"Variable","name":{"kind":"Name","value":"bucketSlug"}},"type":{"kind":"NonNullType","type":{"kind":"NamedType","name":{"kind":"Name","value":"String"}}}},{"kind":"VariableDefinition","variable":{"kind":"Variable","name":{"kind":"Name","value":"readKey"}},"type":{"kind":"NonNullType","type":{"kind":"NamedType","name":{"kind":"Name","value":"String"}}}}],"directives":[],"selectionSet":{"kind":"SelectionSet","selections":[{"kind":"Field","name":{"kind":"Name","value":"object"},"arguments":[{"kind":"Argument","name":{"kind":"Name","value":"bucket_slug"},"value":{"kind":"Variable","name":{"kind":"Name","value":"bucketSlug"}}},{"kind":"Argument","name":{"kind":"Name","value":"slug"},"value":{"kind":"StringValue","value":"commissions","block":false}},{"kind":"Argument","name":{"kind":"Name","value":"read_key"},"value":{"kind":"Variable","name":{"kind":"Name","value":"readKey"}}},{"kind":"Argument","name":{"kind":"Name","value":"locale"},"value":{"kind":"StringValue","value":"en","block":false}}],"directives":[],"selectionSet":{"kind":"SelectionSet","selections":[{"kind":"Field","name":{"kind":"Name","value":"metadata"},"arguments":[],"directives":[]}]}}]}}],"loc":{"start":0,"end":170}};
-    doc.loc.source = {"body":"\r\n query($bucketSlug: String!, $readKey: String!) { \r\n  object(bucket_slug: $bucketSlug, slug:\"commissions\", read_key: $readKey, locale: \"en\") {\r\n    metadata\r\n  }\r\n}\r\n  ","name":"GraphQL request","locationOffset":{"line":1,"column":1}};
+    var doc = {"kind":"Document","definitions":[{"kind":"OperationDefinition","operation":"query","variableDefinitions":[{"kind":"VariableDefinition","variable":{"kind":"Variable","name":{"kind":"Name","value":"bucketSlug"}},"type":{"kind":"NonNullType","type":{"kind":"NamedType","name":{"kind":"Name","value":"String"}}}},{"kind":"VariableDefinition","variable":{"kind":"Variable","name":{"kind":"Name","value":"readKey"}},"type":{"kind":"NonNullType","type":{"kind":"NamedType","name":{"kind":"Name","value":"String"}}}}],"directives":[],"selectionSet":{"kind":"SelectionSet","selections":[{"kind":"Field","alias":{"kind":"Name","value":"objects"},"name":{"kind":"Name","value":"objectsByType"},"arguments":[{"kind":"Argument","name":{"kind":"Name","value":"bucket_slug"},"value":{"kind":"Variable","name":{"kind":"Name","value":"bucketSlug"}}},{"kind":"Argument","name":{"kind":"Name","value":"type_slug"},"value":{"kind":"StringValue","value":"translations","block":false}},{"kind":"Argument","name":{"kind":"Name","value":"read_key"},"value":{"kind":"Variable","name":{"kind":"Name","value":"readKey"}}}],"directives":[],"selectionSet":{"kind":"SelectionSet","selections":[{"kind":"Field","name":{"kind":"Name","value":"metadata"},"arguments":[],"directives":[]}]}}]}}],"loc":{"start":0,"end":172}};
+    doc.loc.source = {"body":" query($bucketSlug: String!, $readKey: String!) { \r\n  objects: objectsByType(bucket_slug: $bucketSlug, type_slug:\"translations\", read_key: $readKey) {\r\n    metadata\r\n  }\r\n}","name":"GraphQL request","locationOffset":{"line":1,"column":1}};
   
 
     var names = {};
@@ -116,4 +116,4 @@ webpackHotUpdate(4,{
 /***/ })
 
 })
-//# sourceMappingURL=4.f1db9bbe1961091f595a.hot-update.js.map
+//# sourceMappingURL=4.569d6190e2707b0a7c7d.hot-update.js.map

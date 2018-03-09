@@ -1,0 +1,5 @@
+ query($bucketSlug: String!, $readKey: String!) { 
+  objects: objectsByType(bucket_slug: $bucketSlug, type_slug:"translations", read_key: $readKey) {
+    metadata
+  }
+}

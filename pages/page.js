@@ -1,6 +1,6 @@
 import React from 'react';
 import { graphql } from "react-apollo";
-import QUERY from '../graphql/getCommissions.graphql';
+import QUERY from '../graphql/getTranslations.graphql';
 
 // class Page extends React.Component {
 
