@@ -4,12 +4,12 @@ module.exports =
           var comp = 
       webpackJsonp([4],{
 
-/***/ "./graphql/getTranslations.graphql":
+/***/ "./graphql/getCommissions.graphql":
 /***/ (function(module, exports) {
 
 
-    var doc = {"kind":"Document","definitions":[{"kind":"OperationDefinition","operation":"query","variableDefinitions":[{"kind":"VariableDefinition","variable":{"kind":"Variable","name":{"kind":"Name","value":"bucketSlug"}},"type":{"kind":"NonNullType","type":{"kind":"NamedType","name":{"kind":"Name","value":"String"}}}},{"kind":"VariableDefinition","variable":{"kind":"Variable","name":{"kind":"Name","value":"readKey"}},"type":{"kind":"NonNullType","type":{"kind":"NamedType","name":{"kind":"Name","value":"String"}}}}],"directives":[],"selectionSet":{"kind":"SelectionSet","selections":[{"kind":"Field","alias":{"kind":"Name","value":"objects"},"name":{"kind":"Name","value":"objectsByType"},"arguments":[{"kind":"Argument","name":{"kind":"Name","value":"bucket_slug"},"value":{"kind":"Variable","name":{"kind":"Name","value":"bucketSlug"}}},{"kind":"Argument","name":{"kind":"Name","value":"type_slug"},"value":{"kind":"StringValue","value":"translations","block":false}},{"kind":"Argument","name":{"kind":"Name","value":"read_key"},"value":{"kind":"Variable","name":{"kind":"Name","value":"readKey"}}}],"directives":[],"selectionSet":{"kind":"SelectionSet","selections":[{"kind":"Field","name":{"kind":"Name","value":"metadata"},"arguments":[],"directives":[]}]}}]}}],"loc":{"start":0,"end":172}};
-    doc.loc.source = {"body":" query($bucketSlug: String!, $readKey: String!) { \r\n  objects: objectsByType(bucket_slug: $bucketSlug, type_slug:\"translations\", read_key: $readKey) {\r\n    metadata\r\n  }\r\n}","name":"GraphQL request","locationOffset":{"line":1,"column":1}};
+    var doc = {"kind":"Document","definitions":[{"kind":"OperationDefinition","operation":"query","variableDefinitions":[{"kind":"VariableDefinition","variable":{"kind":"Variable","name":{"kind":"Name","value":"bucketSlug"}},"type":{"kind":"NonNullType","type":{"kind":"NamedType","name":{"kind":"Name","value":"String"}}}},{"kind":"VariableDefinition","variable":{"kind":"Variable","name":{"kind":"Name","value":"readKey"}},"type":{"kind":"NonNullType","type":{"kind":"NamedType","name":{"kind":"Name","value":"String"}}}}],"directives":[],"selectionSet":{"kind":"SelectionSet","selections":[{"kind":"Field","name":{"kind":"Name","value":"object"},"arguments":[{"kind":"Argument","name":{"kind":"Name","value":"bucket_slug"},"value":{"kind":"Variable","name":{"kind":"Name","value":"bucketSlug"}}},{"kind":"Argument","name":{"kind":"Name","value":"slug"},"value":{"kind":"StringValue","value":"commissions","block":false}},{"kind":"Argument","name":{"kind":"Name","value":"read_key"},"value":{"kind":"Variable","name":{"kind":"Name","value":"readKey"}}},{"kind":"Argument","name":{"kind":"Name","value":"locale"},"value":{"kind":"StringValue","value":"en","block":false}}],"directives":[],"selectionSet":{"kind":"SelectionSet","selections":[{"kind":"Field","name":{"kind":"Name","value":"metadata"},"arguments":[],"directives":[]}]}}]}}],"loc":{"start":0,"end":176}};
+    doc.loc.source = {"body":"\r\n query($bucketSlug: String!, $readKey: String!) { \r\n  object(bucket_slug: $bucketSlug, slug:\"commissions\", read_key: $readKey, locale: \"en\") {\r\n    metadata\r\n  }\r\n}\r\n  \r\n\r\n  ","name":"GraphQL request","locationOffset":{"line":1,"column":1}};
   
 
     var names = {};
@@ -126,21 +126,39 @@ module.exports =
 /* WEBPACK VAR INJECTION */(function(module) {/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0_apollo_client__ = __webpack_require__("./node_modules/apollo-client/index.js");
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_1_apollo_client_preset__ = __webpack_require__("./node_modules/apollo-client-preset/lib/index.js");
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_1_apollo_client_preset___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_1_apollo_client_preset__);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2_node_fetch__ = __webpack_require__("./node_modules/node-fetch/browser.js");
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2_node_fetch___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_2_node_fetch__);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2_apollo_utilities__ = __webpack_require__("./node_modules/apollo-utilities/lib/index.js");
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_3_node_fetch__ = __webpack_require__("./node_modules/node-fetch/browser.js");
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_3_node_fetch___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_3_node_fetch__);
 (function () {
-  var enterModule = __webpack_require__("./node_modules/react-hot-loader/patch.js").enterModule;
+    var enterModule = __webpack_require__("./node_modules/react-hot-loader/patch.js").enterModule;
 
-  enterModule && enterModule(module);
+    enterModule && enterModule(module);
 })();
 
 
 
 
 
+
+var dataIdFromObject = function dataIdFromObject(_ref) {
+    var __typename = _ref.__typename,
+        slug = _ref.slug,
+        locale = _ref.locale;
+    return __typename + slug + locale;
+};
+
+var cacheRedirects = {
+    Query: {
+        object: function object(_, args) {
+            return Object(__WEBPACK_IMPORTED_MODULE_2_apollo_utilities__["C" /* toIdValue */])(dataIdFromObject({ __typename: "Object", slug: args.slug, locale: args.locale }));
+        }
+    }
+};
+
 var client = new __WEBPACK_IMPORTED_MODULE_0_apollo_client__["default"]({
-  link: new __WEBPACK_IMPORTED_MODULE_1_apollo_client_preset__["HttpLink"]({ uri: 'https://graphql.cosmicjs.com/v1', fetch: __WEBPACK_IMPORTED_MODULE_2_node_fetch___default.a }),
-  cache: new __WEBPACK_IMPORTED_MODULE_1_apollo_client_preset__["InMemoryCache"]().restore({})
+    link: new __WEBPACK_IMPORTED_MODULE_1_apollo_client_preset__["HttpLink"]({ uri: 'https://graphql.cosmicjs.com/v1', fetch: __WEBPACK_IMPORTED_MODULE_3_node_fetch___default.a }),
+    cache: new __WEBPACK_IMPORTED_MODULE_1_apollo_client_preset__["InMemoryCache"]({ cacheRedirects: cacheRedirects,
+        dataIdFromObject: dataIdFromObject })
 });
 
 var _default = client;
@@ -148,17 +166,19 @@ var _default = client;
 ;
 
 (function () {
-  var reactHotLoader = __webpack_require__("./node_modules/react-hot-loader/patch.js").default;
+    var reactHotLoader = __webpack_require__("./node_modules/react-hot-loader/patch.js").default;
 
-  var leaveModule = __webpack_require__("./node_modules/react-hot-loader/patch.js").leaveModule;
+    var leaveModule = __webpack_require__("./node_modules/react-hot-loader/patch.js").leaveModule;
 
-  if (!reactHotLoader) {
-    return;
-  }
+    if (!reactHotLoader) {
+        return;
+    }
 
-  reactHotLoader.register(client, 'client', 'C:/Projects/JSWorkspace/next-js-graphql/graphql/index.js');
-  reactHotLoader.register(_default, 'default', 'C:/Projects/JSWorkspace/next-js-graphql/graphql/index.js');
-  leaveModule(module);
+    reactHotLoader.register(dataIdFromObject, 'dataIdFromObject', 'C:/Projects/JSWorkspace/next-js-graphql/graphql/index.js');
+    reactHotLoader.register(cacheRedirects, 'cacheRedirects', 'C:/Projects/JSWorkspace/next-js-graphql/graphql/index.js');
+    reactHotLoader.register(client, 'client', 'C:/Projects/JSWorkspace/next-js-graphql/graphql/index.js');
+    reactHotLoader.register(_default, 'default', 'C:/Projects/JSWorkspace/next-js-graphql/graphql/index.js');
+    leaveModule(module);
 })();
 
 ;
@@ -13805,8 +13825,8 @@ var _default = Index;
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0_react___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_0_react__);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_1_react_apollo__ = __webpack_require__("./node_modules/react-apollo/react-apollo.browser.umd.js");
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_1_react_apollo___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_1_react_apollo__);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__graphql_getTranslations_graphql__ = __webpack_require__("./graphql/getTranslations.graphql");
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__graphql_getTranslations_graphql___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_2__graphql_getTranslations_graphql__);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__graphql_getCommissions_graphql__ = __webpack_require__("./graphql/getCommissions.graphql");
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__graphql_getCommissions_graphql___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_2__graphql_getCommissions_graphql__);
 var _jsxFileName = 'C:\\Projects\\JSWorkspace\\next-js-graphql\\pages\\page.js';
 
 (function () {
@@ -13830,7 +13850,7 @@ var _jsxFileName = 'C:\\Projects\\JSWorkspace\\next-js-graphql\\pages\\page.js';
 //   }
 // }
 
-var Page = Object(__WEBPACK_IMPORTED_MODULE_1_react_apollo__["graphql"])(__WEBPACK_IMPORTED_MODULE_2__graphql_getTranslations_graphql___default.a, {
+var Page = Object(__WEBPACK_IMPORTED_MODULE_1_react_apollo__["graphql"])(__WEBPACK_IMPORTED_MODULE_2__graphql_getCommissions_graphql___default.a, {
   options: {
     variables: {
       bucketSlug: "affiliates",
